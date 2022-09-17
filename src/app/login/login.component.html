@@ -1,5 +1,9 @@
-<small *ngIf='isCorrect'>{{errorMessage}}</small>
-<br *ngIf="isCorrect">
-UserName : <input type="text" name="userName" [(ngModel)]='userName'>
-Password : <input type="password" name="password" [(ngModel)]="password">
-<button (click)="func()" type="button" name="login">Login</button>
+<div class=" bg-danger">
+    <small class="text-white m-2" *ngIf="isCorrect">{{ errorMessage }}</small>
+  <br *ngIf="isCorrect" />
+</div>
+<div class="container mt-lg-1">
+  UserName :  <input type="text" name="userName" [(ngModel)]="userName" /> 
+  Password :  <input type="password" name="password" [(ngModel)]="password" />
+  <button (click)="func()"  type="button" class="btn btn-primary m-2" name="login">Login</button>
+</div>
