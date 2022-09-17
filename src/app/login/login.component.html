@@ -1,0 +1,5 @@
+<small *ngIf='isCorrect'>{{errorMessage}}</small>
+<br *ngIf="isCorrect">
+UserName : <input type="text" name="userName" [(ngModel)]='userName'>
+Password : <input type="password" name="password" [(ngModel)]="password">
+<button (click)="func()" type="button" name="login">Login</button>

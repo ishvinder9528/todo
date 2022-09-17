@@ -1,0 +1,15 @@
+<table border="1">
+    <caption>Table</caption>
+    <tr>
+        <th>ID</th>
+        <th>DESCRIPTION</th>
+        <th>TILL DATE</th>
+        <th>IS COMPLETED?</th>
+    </tr>
+    <tr *ngFor="let todo of Todos">
+        <td>{{todo.id}}</td>
+        <td>{{todo.description}}</td>
+        <td>{{todo.targetDate | date | uppercase}}</td>
+        <td>{{todo.isCompleted}}</td>
+    </tr>
+</table>
