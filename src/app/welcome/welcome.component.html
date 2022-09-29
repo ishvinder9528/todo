@@ -1,5 +1,10 @@
-<p>Welcome {{name}}, To our awesome website..</p>
-<div>
+<div class="container">
+    <h2 class="text-muted mt-4">Welcome {{name}}</h2>
+  <p class="mt-3">Welcome, To our awesome website..</p>
+  <div>
     <p>click <a routerLink="/list">here</a> to go to your todo's list.</p>
+  </div>
+  <button (click)="getWelcomeData()" class="btn btn-primary  ">Welcome Message</button>
+  <br>
+  <button (click)="func()" class="btn btn-dark mt-2" type="button">Go to Login Page</button>
 </div>
-<button (click)="func()" type="button" >Go to Login Page</button>

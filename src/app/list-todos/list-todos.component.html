@@ -1,15 +1,24 @@
-<table border="1">
-    <caption>Table</caption>
-    <tr>
-        <th>ID</th>
-        <th>DESCRIPTION</th>
-        <th>TILL DATE</th>
-        <th>IS COMPLETED?</th>
-    </tr>
+<div class="container">
+    <div >
+        <h1 class="text-muted mt-3">My Todo's</h1>
+    </div>
+  <table class="table table-striped">
+    <thead class="table-group-divider">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">TILL DATE</th>
+        <th scope="col">IS COMPLETED?</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
     <tr *ngFor="let todo of Todos">
-        <td>{{todo.id}}</td>
-        <td>{{todo.description}}</td>
-        <td>{{todo.targetDate | date | uppercase}}</td>
-        <td>{{todo.isCompleted}}</td>
+      <th scope="row">{{ todo.id }}</th>
+      <td scope="row">{{ todo.description }}</td>
+      <td scope="row">{{ todo.targetDate | date | uppercase }}</td>
+      <td scope="row">{{ todo.isCompleted }}</td>
     </tr>
-</table>
+</tbody>
+  </table>
+
+</div>

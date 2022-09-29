@@ -9,6 +9,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { LogoutComponent } from './logout/logout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { HeaderComponent } from './header/header.component';
     WelcomeComponent,
     ListTodosComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
