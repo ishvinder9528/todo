@@ -8,3 +8,7 @@
   <br>
   <button (click)="func()" class="btn btn-dark mt-2" type="button">Go to Login Page</button>
 </div>
+<div *ngIf="welcomeMessageFromService" class="container">
+  <h2>Your Coustomized message is here...</h2>
+  <p>{{welcomeMessageFromService}}</p>
+</div>
