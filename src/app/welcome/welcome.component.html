@@ -4,9 +4,9 @@
   <div>
     <p>click <a routerLink="/list">here</a> to go to your todo's list.</p>
   </div>
-  <button (click)="getWelcomeData()" class="btn btn-primary  ">Welcome Message</button>
+  <button (click)="getWelcomeDataWithParameter()" class="btn btn-primary  ">Welcome Message</button>
   <br>
-  <button (click)="func()" class="btn btn-dark mt-2" type="button">Go to Login Page</button>
+  <!-- <button (click)="func()" class="btn btn-dark mt-2" type="button">Go to Login Page</button> -->
 </div>
 <div *ngIf="welcomeMessageFromService" class="container">
   <h2>Your Coustomized message is here...</h2>

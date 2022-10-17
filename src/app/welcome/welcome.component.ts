@@ -22,12 +22,18 @@ export class WelcomeComponent implements OnInit {
     this.router.navigate(['login']);
   }
   getWelcomeData() {
-    console.log(this.service.execetuHelloWorldBeanService());
-    this.service.execetuHelloWorldBeanService().subscribe(
+    console.log(this.service.executeHelloWorldBeanService());
+    this.service.executeHelloWorldBeanService().subscribe(
       response => this.handleSuccessfullResponse(response),
       error => this.handleErrorResponse(error)
     );
     // console.log('WelcomeComponent');
+  }
+  getWelcomeDataWithParameter(){
+    this.service.executeHelloWorldPathVariableService(this.name).subscribe(
+      response => this.handleSuccessfullResponse(response),
+      error => this.handleErrorResponse(error)
+    );
   }
   
   handleSuccessfullResponse(response:any){
@@ -39,4 +45,6 @@ export class WelcomeComponent implements OnInit {
       console.log(error.error.message);
       this.welcomeMessageFromService=error.error.message;
   }
+
+
 }
