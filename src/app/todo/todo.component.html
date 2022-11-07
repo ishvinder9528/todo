@@ -1,1 +1,50 @@
-<p>todo works!</p>
+<div class="container-sm s">
+  <br />
+  <h1>Todo</h1>
+  <hr />
+  <br />
+</div>
+
+<div class="container form-group">
+
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" 
+  #todoForm="ngForm">
+    <fieldset>
+      <label>
+        <h3>Description :</h3>
+      </label>
+      <input
+        type="text"
+        name="description"
+        #description = "ngModel"
+        [(ngModel)]="todo.description"
+        class="form-control"
+        required="required"
+        minlength="4"
+      />
+      <br />
+    </fieldset>
+    
+    <fieldset>
+      <label>
+        <h3>Date :</h3>
+      </label>
+      <input
+        type="date"
+        name="targetDate "
+        #targetDate = "ngModel"
+        [ngModel]="todo.targetDate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="todo.targetDate = $event"
+        class="form-control"
+        required="required"
+      />
+      <br />
+    </fieldset>
+
+    <div class="row">
+      <button 
+      type="submit"
+      class="btn btn-success">Save</button>
+    </div>
+  </form>
+</div>

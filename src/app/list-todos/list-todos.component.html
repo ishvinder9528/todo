@@ -1,38 +1,36 @@
+<h1 class="container"><br> Todos List  <hr> </h1>
+
+<div class="alert alert-success container" *ngIf='message'> {{message}}</div>
+
 <div class="container">
-  <div>
-    <h1 class="text-muted mt-3">My Todo's</h1>
-  </div>
-  <div class="alert alert-success container mt-3" *ngIf="message">
-    {{ message }}
-    <br *ngIf="message" />
-  </div>
-  <table class="table table-striped">
-    <thead class="table-group-divider">
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">DESCRIPTION</th>
-        <th scope="col">TILL DATE</th>
-        <th scope="col">IS COMPLETED?</th>
-        <th scope="col">UPDATE</th>
-        <th scope="col">DELETE</th>
+        <!-- <th>Id</th> -->
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>is Completed?</th>
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
     </thead>
-    <tbody class="table-group-divider">
-      <tr *ngFor="let todo of Todos">
-        <th scope="row">{{ todo.id }}</th>
-        <td scope="row">{{ todo.description }}</td>
-        <td scope="row">{{ todo.targetDate | date | uppercase }}</td>
-        <td scope="row">{{ todo.done }}</td>
-        <td scope="row">
-          <button (click)="updateTodo(todo.id)" class="btn btn-success">
-            Update
-          </button>
-        <td scope="row">
-          <button (click)="deleteTodo(todo.id)" class="btn btn-warning">
-            Delete
-          </button>
-        </td>
-      </tr>
+    <tbody>
+      <!--   for (Todo todo: todos) {  -->
+              <tr *ngFor="let todo of todos">
+                <!-- <td>{{todo.id}}</td> -->
+                <td>{{todo.description}}</td>
+                <td>{{todo.targetDate | date | uppercase}}</td>
+                <td>{{todo.done}}</td>
+                <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
+              </tr>
+      <!-- } -->
     </tbody>
+
   </table>
+
+  <div class="row">
+      <button (click)="addTodo()" class="btn btn-success">Add</button>
+  </div>
+
 </div>

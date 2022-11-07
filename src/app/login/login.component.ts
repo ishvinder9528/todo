@@ -8,7 +8,7 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  userName = 'Ishvinder';
+  username = 'Ishvinder';
   password = '';
   errorMessage = 'Invalid username or password';
   isCorrect: boolean = false;
@@ -16,12 +16,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   func() {
-    if (this.hardcodedAuthenticationService.authenticater(this.userName, this.password)) {
-      this.router.navigate(['welcome', this.userName]);
+    if (this.hardcodedAuthenticationService.authenticater(this.username, this.password)) {
+      this.router.navigate(['welcome', this.username]);
     } else {
       this.isCorrect = true;
     }
 
-    console.warn(this.userName);
+    console.warn(this.username);
   }
 }

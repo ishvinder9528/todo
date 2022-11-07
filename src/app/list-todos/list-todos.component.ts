@@ -1,65 +1,78 @@
+import { TodoDataService } from './../service/data/todo-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TodoDataService } from '../service/data/todo-data.service';
 
 export class Todo {
   constructor(
     public id: number,
     public description: string,
-    public targetDate: Date,
-    public done: boolean
-  ) {}
+    public done: boolean,
+    public targetDate: Date
+  ){
+
+  }
 }
 
 @Component({
   selector: 'app-list-todos',
   templateUrl: './list-todos.component.html',
-  styleUrls: ['./list-todos.component.css'],
+  styleUrls: ['./list-todos.component.css']
 })
 export class ListTodosComponent implements OnInit {
-  Todos: Todo[] = [];
-  message: string = '';
-  // = [
-  //   new Todo(1, 'Wake up Early', false, new Date()),
-  //   new Todo(2, 'Code code code', false, new Date()),
-  //   new Todo(2, 'Sleep', false, new Date()),
-  //   new Todo(4, 'And Repeat', false, new Date()),
 
-  // ];
-  // todos=[
-  //   { id:1,description:'Wake up Early' },
-  //   { id:2,description:'Code code code' },
-  //   { id:3,description:'Sleep' },
-  //   { id:4,description:'And Repeat' }
+  todos: Todo[]
+
+  message: string
+
+  // = [
+  //   new Todo(1, 'Learn to Dance', false, new Date()),
+  //   new Todo(2, 'Become an Expert at Angular', false, new Date()),
+  //   new Todo(3, 'Visit India', false, new Date())
+  //   // {id : 1, description : },
+  //   // {id : 2, description : ''},
+  //   // {id : 3, description : 'Visit India'}
   // ]
 
-  constructor(private todoService: TodoDataService,
-    private router: Router) {}
+  // todo = {
+  //     id : 1,
+  //     description: 'Learn to Dance'
+  // }
 
-  deleteTodo(id: number) {
-    console.log(`Todo Deleted ${id}`);
-    this.todoService.deleteTodo("ishvinder",id).subscribe(
-      response =>{
+  constructor(
+    private todoService:TodoDataService,
+    private router : Router
+  ) { }
+
+  ngOnInit() {
+    this.refreshTodos();
+  }
+
+  refreshTodos(){
+    this.todoService.retriveAllTodos('ishvinder').subscribe(
+      response => {
         console.log(response);
-        this.message = `ID-${id} Successfully Deleted`;
-        this.refreshTodo(); 
+        this.todos = response;
       }
-    );
+    )
   }
 
-  updateTodo(id:number){
-    console.log(`Todo Updated ${id}`);
-    this.router.navigate([ `/todos/${id}`]);
+  deleteTodo(id) {
+    console.log(`delete todo ${id}` )
+    this.todoService.deleteTodo('ishvinder', id).subscribe (
+      response => {
+        console.log(response);
+        this.message = `Delete Todo Successfully!`;
+        this.refreshTodos();
+      }
+    )
   }
 
-  refreshTodo(){
-    this.todoService.retriveAllTodos('ishvinder').subscribe((response) => {
-      console.log(response);
-      this.Todos = response;
-    });
+  updateTodo(id) {
+    console.log(`update ${id}`)
+    this.router.navigate(['todos',id])
   }
 
-  ngOnInit(): void {
-    this.refreshTodo();
+  addTodo() {
+    this.router.navigate(['todos',0])
   }
 }
