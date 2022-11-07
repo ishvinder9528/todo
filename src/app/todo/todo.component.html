@@ -1,12 +1,16 @@
 <div class="container-sm s">
   <br />
-  <h1>Todo</h1>
+  <h1>{{new}} Todo</h1>
   <hr />
   <br />
 </div>
 
 <div class="container form-group">
 
+  <!-- <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter Valid Values</div> -->
+  <div class="alert alert-warning" *ngIf="description.dirty && description.invalid">Enter minimum 4 Alphabets</div>
+  <div class="alert alert-warning" *ngIf="targetDate.dirty && targetDate.invalid">Enter Valid Date</div>
+  
   <form (ngSubmit)="!todoForm.invalid && saveTodo()" 
   #todoForm="ngForm">
     <fieldset>

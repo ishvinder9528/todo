@@ -14,6 +14,7 @@ export class TodoComponent implements OnInit {
   id: number = NaN
   todo: Todo
   url: string=""
+  new: string;
 
   constructor(
     private todoService: TodoDataService,
@@ -27,8 +28,9 @@ export class TodoComponent implements OnInit {
     this.id= parseInt(this.url.slice(-1));
     console.log(this.id);
     
-    
-
+    if(this.id==0){
+      this.new = "New" 
+    }
     this.todo = new Todo(this.id,"",false,new Date());
     
     if(this.id!=0){
@@ -40,7 +42,7 @@ export class TodoComponent implements OnInit {
 
     saveTodo(){
       if(this.id==0){
-        // create 
+        // create
         this.todoService.createTodo('ishvinder', this.todo).subscribe(data =>
           {
             console.log(data);
