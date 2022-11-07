@@ -1,54 +1,40 @@
 <div class="container-sm s">
   <br />
-  <h1>{{new}} Todo</h1>
+  <h1>{{ new }} Todo</h1>
   <hr />
   <br />
 </div>
 
 <div class="container form-group">
-
   <!-- <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter Valid Values</div> -->
-  <div class="alert alert-warning" *ngIf="description.dirty && description.invalid">Enter minimum 4 Alphabets</div>
-  <div class="alert alert-warning" *ngIf="targetDate.dirty && targetDate.invalid">Enter Valid Date</div>
-  
-  <form (ngSubmit)="!todoForm.invalid && saveTodo()" 
-  #todoForm="ngForm">
+  <div class="alert alert-warning" *ngIf="description.dirty && description.invalid">
+    Enter minimum 4 Alphabets
+  </div>
+  <div class="alert alert-warning" *ngIf="targetDate.dirty && targetDate.invalid">
+    Enter Valid Date
+  </div>
+
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
     <fieldset>
       <label>
         <h3>Description :</h3>
       </label>
-      <input
-        type="text"
-        name="description"
-        #description = "ngModel"
-        [(ngModel)]="todo.description"
-        class="form-control"
-        required="required"
-        minlength="4"
-      />
+      <input type="text" name="description" #description="ngModel" [(ngModel)]="todo.description" class="form-control"
+        required="required" minlength="4" />
       <br />
     </fieldset>
-    
+
     <fieldset>
       <label>
         <h3>Date :</h3>
       </label>
-      <input
-        type="date"
-        name="targetDate "
-        #targetDate = "ngModel"
-        [ngModel]="todo.targetDate | date: 'yyyy-MM-dd'"
-        (ngModelChange)="todo.targetDate = $event"
-        class="form-control"
-        required="required"
-      />
+      <input type="date" name="targetDate " #targetDate="ngModel" [ngModel]="todo.targetDate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="todo.targetDate = $event" class="form-control" required="required" />
       <br />
     </fieldset>
 
     <div class="row">
-      <button 
-      type="submit"
-      class="btn btn-success">Save</button>
+      <button type="submit" class="btn btn-success">Save</button>
     </div>
   </form>
 </div>
